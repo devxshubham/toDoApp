@@ -1,7 +1,9 @@
 import { useState,useEffect } from 'react'
 
 
+
 export function CreateTodo(){
+
     const [title, setTitle] = useState("");
     const [desc, setDesc ] = useState("");
     return <div>
@@ -28,6 +30,7 @@ export function CreateTodo(){
                 console.log(e)
             }
         }}>Add to do</button>
+
 
     </div>
 }

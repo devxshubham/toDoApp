@@ -1,9 +1,10 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
-export function RenderTodo({todos}){
+export function RenderTodo({todos, setTodos}){
+    
     return <div>
         {todos.map( (todo) => {
-            return <div>
+            return <div key={todo._id}>
                 <h1>{todo.title}</h1>
                 <h4>{todo.description}</h4>
                 <button onClick={()=>{

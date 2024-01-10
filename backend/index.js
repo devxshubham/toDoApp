@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 const cors = require("cors")
 app.use(cors({}))
 
-mongoose.connect(`ADD YOUR MONGO DB LINK HERE`)
+mongoose.connect("mongodb://localhost:27017/todoapp")
     .then(() => {
         console.log('SUCCEFULLY CONNECTED TO MONGODB')
     })
@@ -45,6 +45,13 @@ app.post('/todo', async(req, res)=>{
 
     res.send('todo added')
 
+})
+app.get('/todo/:id', async(req, res)=>{
+    const id = req.params.id;
+    
+    const task = await Todo.findById(id);
+    console.log(id)
+    res.json(task)
 })
 
 app.put('/completed', async(req, res) => {
