@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 const cors = require("cors")
 app.use(cors({}))
 
+require('dotenv').config()
 
 
 mongoose.connect(`mongodb://localhost:${process.env.MONGOURL}/todoapp`)
