@@ -2,7 +2,7 @@ import { useState,useEffect } from 'react'
 
 
 
-export function CreateTodo(){
+export function CreateTodo({setChange}){
 
     const [title, setTitle] = useState("");
     const [desc, setDesc ] = useState("");
@@ -29,6 +29,7 @@ export function CreateTodo(){
             catch(e){
                 console.log(e)
             }
+            setChange( preState => preState+1);
         }}>Add to do</button>
 
 

@@ -8,7 +8,9 @@ const mongoose = require('mongoose')
 const cors = require("cors")
 app.use(cors({}))
 
-mongoose.connect("mongodb://localhost:27017/todoapp")
+
+
+mongoose.connect(`mongodb://localhost:${process.env.MONGOURL}/todoapp`)
     .then(() => {
         console.log('SUCCEFULLY CONNECTED TO MONGODB')
     })
@@ -28,7 +30,6 @@ app.get('/todo', async(req,res)=>{
 
 app.post('/todo', async(req, res)=>{
     const payload = create.safeParse(req.body)
-    console.log(req.body)
     if(!payload.success){
         res.status(500).json({
             msg : "sent wrong inputs"
@@ -50,7 +51,6 @@ app.get('/todo/:id', async(req, res)=>{
     const id = req.params.id;
     
     const task = await Todo.findById(id);
-    console.log(id)
     res.json(task)
 })
 
@@ -74,7 +74,6 @@ app.put('/completed', async(req, res) => {
 })
 app.delete('/todo', async(req, res) => {
     const id = req.body._id
-    console.log(id)
     await Todo.findByIdAndDelete(id)
     const todos = await Todo.find({})
     res.json({todos})

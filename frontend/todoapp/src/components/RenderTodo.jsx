@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-export function RenderTodo({todos, setTodos}){
+export function RenderTodo({todos, setChange}){
     
     return <div>
         {todos.map( (todo) => {
@@ -22,7 +22,7 @@ export function RenderTodo({todos, setTodos}){
                     catch(e){
                         console.log(e)
                     }
-                    
+                    setChange(preState => preState+1)
                 }}>{todo.completed == true ? "Completed" : "Mark as done"}</button>
 
                 <button onClick={()=>{
@@ -40,6 +40,7 @@ export function RenderTodo({todos, setTodos}){
                     catch(e){
                         console.log(e)
                     }
+                    setChange(preState => preState+1)
                 }}>Delete</button>
             </div>
         })}
