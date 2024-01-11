@@ -7,11 +7,11 @@ import {RenderTodo} from './components/RenderTodo'
 import useTodos from './fetchData/customHook'
 
 function App() {
-  const {todos, setChange} = useTodos();
+  const {todos, setTodos} = useTodos();
   return(
     <div>
-        <CreateTodo setChange={setChange}></CreateTodo>
-        <RenderTodo todos={todos} setChange={setChange}></RenderTodo>
+        <CreateTodo></CreateTodo>
+        <RenderTodo todos={todos} setTodos={setTodos}></RenderTodo>
         
     </div>
 
