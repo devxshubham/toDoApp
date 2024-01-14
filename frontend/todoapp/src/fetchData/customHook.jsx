@@ -2,7 +2,8 @@ import { useState,useEffect } from 'react'
 
 function useTodos(){
     const [todos, setTodos] = useState([]);
-    console.log("todos",todos)
+    const [change, setChange] = useState(0);
+
   
     useEffect(() => {
       const fetchData = async () => {
@@ -16,9 +17,9 @@ function useTodos(){
         }
       };
       fetchData();
-    }, []); // Empty dependency array ensures the effect runs once after the initial render
+    }, [change]); // Empty dependency array ensures the effect runs once after the initial render
   
-    return {todos,setTodos};
+    return {todos, setChange};
   
   }
 

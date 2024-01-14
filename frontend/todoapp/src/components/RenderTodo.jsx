@@ -1,10 +1,10 @@
 import {useState, useEffect} from 'react'
 
-export function RenderTodo({todos, setTodos}){
+export function RenderTodo({todos, setChange}){
     
-    return <div>
+    return <div className='renderAll'>
         {todos.map( (todo) => {
-            return <div key={todo._id}>
+            return <div className='eachTodo' key={todo._id}>
                 <h1>{todo.title}</h1>
                 <h4>{todo.description}</h4>
                 <button onClick={()=>{
@@ -22,7 +22,7 @@ export function RenderTodo({todos, setTodos}){
                     catch(e){
                         console.log(e)
                     }
-                    
+                    setChange( preState => preState+1);
                 }}>{todo.completed == true ? "Completed" : "Mark as done"}</button>
 
                 <button onClick={()=>{
@@ -40,6 +40,7 @@ export function RenderTodo({todos, setTodos}){
                     catch(e){
                         console.log(e)
                     }
+                    setChange( preState => preState+1);
                 }}>Delete</button>
             </div>
         })}

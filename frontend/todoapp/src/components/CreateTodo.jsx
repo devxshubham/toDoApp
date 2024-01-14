@@ -2,11 +2,11 @@ import { useState,useEffect } from 'react'
 
 
 
-export function CreateTodo(){
+export function CreateTodo({setChange}){
 
     const [title, setTitle] = useState("");
     const [desc, setDesc ] = useState("");
-    return <div>
+    return <div className='create'>
         <input type="text" placeholder="title" onChange={ (e) => {
             setTitle(e.target.value)
         }}></input>
@@ -29,6 +29,7 @@ export function CreateTodo(){
             catch(e){
                 console.log(e)
             }
+            setChange( preState => preState+1);
         }}>Add to do</button>
 
 
