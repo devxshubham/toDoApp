@@ -1,8 +1,9 @@
-import {useState, useEffect} from 'react'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 export function RenderTodo({todos, setChange}){
+    const [animationParent] = useAutoAnimate()
     
-    return <div className='renderAll'>
+    return <div ref={animationParent} className='renderAll'>
         {todos.map( (todo) => {
             return <div className='eachTodo' key={todo._id}>
                 <h1>{todo.title}</h1>

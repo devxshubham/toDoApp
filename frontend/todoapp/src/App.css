@@ -6,7 +6,7 @@
 .create{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   background-color: white;
   margin : 50px;  
 }

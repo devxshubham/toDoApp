@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 const cors = require("cors")
 app.use(cors({}))
 
-
+ 
 require('dotenv').config()
 
 mongoose.connect(`mongodb://localhost:${process.env.MONGOURL}/todoapp`)
@@ -31,7 +31,6 @@ app.get('/todo', async(req,res)=>{
 
 app.post('/todo', async(req, res)=>{
     const payload = create.safeParse(req.body)
-    console.log(req.body)
     if(!payload.success){
         res.status(500).json({
             msg : "sent wrong inputs"

@@ -8,11 +8,12 @@ import useTodos from './fetchData/customHook'
 
 function App() {
   const { todos, setChange } = useTodos();
+
   
   return(
-    <div className="container">
+    <div className="container" >
         <CreateTodo setChange={setChange}></CreateTodo>
-        <RenderTodo todos={todos} setChange={setChange}></RenderTodo>
+        <RenderTodo  todos={todos} setChange={setChange}></RenderTodo>
         
     </div>
 
