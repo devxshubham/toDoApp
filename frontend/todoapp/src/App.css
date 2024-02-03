@@ -1,14 +1,18 @@
 
 .container{
   display : flex;
+  width : 100vw;
   
 }
 .create{
   display: flex;
   flex-direction: column;
+  width : 30vw;
 
   background-color: white;
-  margin : 50px;  
+  border : 1px solid black;
+  border-radius : 10px;
+  margin : 10px;
 }
 .renderAll{
   display : grid;
@@ -16,11 +20,21 @@
   grid-gap: 20px;
   grid-auto-rows: minmax(100px, auto);
   grid-auto-columns: minmax(00px, 1px);
+
+  width : 70vw;
+  margin : 10px;
 }
 .eachTodo{
   background-color: grey;
   border: solid 1px black;
+  text-align: center;
+  
   border-radius: 15px;
+  transition: all 3s ease 1s;
+}
+.eachTodo:hover{
+  transform : scale(2);
+  margin-top: 20vh;
 }
 input{
   padding: 10px;

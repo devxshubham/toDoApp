@@ -1,23 +1,29 @@
-
 import './App.css'
+
+import useTodos from './fetchData/customHook';
 
 import {CreateTodo} from './components/CreateTodo'
 import {RenderTodo} from './components/RenderTodo'
 
-import useTodos from './fetchData/customHook'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  { path : '/todo', Component : Todos},
+]);
 
 function App() {
-  const { todos, setChange } = useTodos();
+  return <RouterProvider router={router} />;
+}
 
-  
-  return(
-    <div className="container" >
-        <CreateTodo setChange={setChange}></CreateTodo>
-        <RenderTodo  todos={todos} setChange={setChange}></RenderTodo>
-        
-    </div>
-
-  )
+function Todos(){
+  const {todos, setChange} = useTodos();
+  return <div className="container" >
+    <CreateTodo setChange={setChange}></CreateTodo>
+    <RenderTodo  todos={todos} setChange={setChange}></RenderTodo>
+</div>
 }
 
 export default App
