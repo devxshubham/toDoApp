@@ -1,7 +1,7 @@
 import './App.css'
 
 import useTodos from './fetchData/customHook';
-
+import {SingleTodo} from './components/singleTodo'
 import {CreateTodo} from './components/CreateTodo'
 import {RenderTodo} from './components/RenderTodo'
 
@@ -12,6 +12,7 @@ import {
 
 const router = createBrowserRouter([
   { path : '/todo', Component : Todos},
+  { path : '/todo/:id', Component : SingleTodo}
 ]);
 
 function App() {

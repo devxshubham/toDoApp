@@ -1,14 +1,12 @@
-import { useAutoAnimate } from '@formkit/auto-animate/react'
-
-export function RenderTodo({todos, setChange}){
-    const [animationParent] = useAutoAnimate()
-    
-    return <div ref={animationParent} className='renderAll'>
-        {todos.map( (todo) => {
-            return <div className='eachTodo' key={todo._id}>
-                <h1>{todo.title}</h1>
+export function SingleTodo(){
+    const todo = {
+        title : "CODE",
+        description : "code daily 8 hours",
+        completed : true,
+    }
+    return <div className="singleTodo">
+        <h1>{todo.title}</h1>
                 <h4>{todo.description}</h4>
-                <button> <a href={`todo/${todo._id}`}>open</a> </button>
                 <button onClick={()=>{
                     try{
                         fetch('http://localhost:3000/completed',{
@@ -44,8 +42,6 @@ export function RenderTodo({todos, setChange}){
                     }
                     setChange( preState => preState+1);
                 }}>Delete</button>
-            </div>
-        })}
         
     </div>
 }

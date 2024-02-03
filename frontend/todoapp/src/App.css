@@ -30,12 +30,12 @@
   text-align: center;
   
   border-radius: 15px;
-  transition: all 3s ease 1s;
+  /* transition: all 3s ease 1s; */
 }
-.eachTodo:hover{
+/* .eachTodo:hover{
   transform : scale(2);
   margin-top: 20vh;
-}
+} */
 input{
   padding: 10px;
   margin: 20px;
