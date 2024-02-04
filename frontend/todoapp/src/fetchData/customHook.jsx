@@ -1,9 +1,12 @@
 import { useState,useEffect } from 'react'
+import { useRecoilValue} from 'recoil';
+import {changeAtom} from '../store/atoms/change'
 
 function useTodos(){
     const [todos, setTodos] = useState([]);
-    const [change, setChange] = useState(0);
+    // const [change, setChange] = useState(0);
 
+    const change = useRecoilValue(changeAtom)
   
     useEffect(() => {
       const fetchData = async () => {
@@ -19,7 +22,7 @@ function useTodos(){
       fetchData();
     }, [change]); // Empty dependency array ensures the effect runs once after the initial render
   
-    return {todos, setChange};
+    return {todos};
   
   }
 

@@ -1,14 +1,16 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 import {todoAtom} from '../store/atoms/singleTodoAtom'
-import { useRecoilState } from 'recoil'
+import { useSetRecoilState, useRecoilState } from 'recoil'
+import { changeAtom } from '../store/atoms/change'
 
-export function RenderTodo({todos, setChange}){
+export function RenderTodo({todos}){
     const [animationParent] = useAutoAnimate()
 
-    const [singleTodo,setSingleTodo] = useRecoilState(todoAtom);
+    const setChange = useRecoilState(changeAtom)
 
-    console.log(singleTodo)
+    const setSingleTodo = useSetRecoilState(todoAtom)
+    setSingleTodo(prev => prev+1)
     
     return <div ref={animationParent} className='renderAll'>
         {todos.map( (todo) => {
@@ -16,13 +18,11 @@ export function RenderTodo({todos, setChange}){
                 <h1>{todo.title}</h1>
                 <h4>{todo.description}</h4>
                 <button onClick={()=>{
-                    console.log("butotn clicked")
                     setSingleTodo({
                         _id : todo._id,
                         title : todo.title,
-                        description : todo.description,
-                    })
-                    console.log(singleTodo)
+                        description : todo.description
+                    });
                 }}> <a href={`todo/${todo._id}`}>open</a> </button>
                 <button onClick={()=>{
                     try{

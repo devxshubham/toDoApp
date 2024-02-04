@@ -18,16 +18,20 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RecoilRoot>
-    <RouterProvider router={router} />
-  </RecoilRoot>;
+  return (
+    <>
+        <RecoilRoot>
+          <RouterProvider router={router} />
+        </RecoilRoot>;
+    </>
+  )
 }
 
 function Todos(){
-  const {todos, setChange} = useTodos();
+  const {todos} = useTodos();
   return <div className="container" >
-    <CreateTodo setChange={setChange}></CreateTodo>
-    <RenderTodo  todos={todos} setChange={setChange}></RenderTodo>
+    <CreateTodo></CreateTodo>
+    <RenderTodo  todos={todos} ></RenderTodo>
 </div>
 }
 

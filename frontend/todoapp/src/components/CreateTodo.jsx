@@ -1,9 +1,11 @@
 import { useState,useEffect } from 'react'
+import { useSetRecoilState } from 'recoil';
+import { changeAtom } from '../store/atoms/change';
 
 
 
-export function CreateTodo({setChange}){
-
+export function CreateTodo(){
+    const setChange = useSetRecoilState(changeAtom)
     const [title, setTitle] = useState("");
     const [desc, setDesc ] = useState("");
     return <div className='create'>

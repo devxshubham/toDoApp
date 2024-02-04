@@ -1,13 +1,20 @@
 import {todoAtom} from '../store/atoms/singleTodoAtom'
-import {RecoilRoot, useRecoilValue} from 'recoil'
+import {RecoilRoot, useRecoilValue,useRecoilState} from 'recoil'
+import {useEffect} from 'react'
 
 export function SingleTodo(){
-    const todo = useRecoilValue(todoAtom)
-    console.log(todo)
-    return <h1>todos{todo}</h1>
+    const [todo, setTodo] = useRecoilState(todoAtom)
+    
+    // return <h1>{todo}</h1>
     return <div className="singleTodo">
         <h1>{todo.title}</h1>
                 <h4>{todo.description}</h4>
+                <button onClick={()=>{
+                    setTodo({
+                        title : "setted",
+                        description : "setted"
+                    });
+                }}>change</button>
                 <button onClick={()=>{
                     try{
                         fetch('http://localhost:3000/completed',{

@@ -2,5 +2,8 @@ import {atom} from 'recoil';
 
 export const todoAtom = atom({
     key : 'todoAtom',
-    defualt : {},
+    default : {
+        title : "default",
+        description : "description"
+    }
 });
