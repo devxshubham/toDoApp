@@ -1,5 +1,7 @@
 import './App.css'
 
+import {RecoilRoot} from 'recoil'
+
 import useTodos from './fetchData/customHook';
 import {SingleTodo} from './components/singleTodo'
 import {CreateTodo} from './components/CreateTodo'
@@ -16,7 +18,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return <RecoilRoot>
+    <RouterProvider router={router} />
+  </RecoilRoot>;
 }
 
 function Todos(){

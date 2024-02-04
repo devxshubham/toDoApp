@@ -1,9 +1,10 @@
+import {todoAtom} from '../store/atoms/singleTodoAtom'
+import {RecoilRoot, useRecoilValue} from 'recoil'
+
 export function SingleTodo(){
-    const todo = {
-        title : "CODE",
-        description : "code daily 8 hours",
-        completed : true,
-    }
+    const todo = useRecoilValue(todoAtom)
+    console.log(todo)
+    return <h1>todos{todo}</h1>
     return <div className="singleTodo">
         <h1>{todo.title}</h1>
                 <h4>{todo.description}</h4>

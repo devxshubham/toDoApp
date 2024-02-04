@@ -1,14 +1,29 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 
+import {todoAtom} from '../store/atoms/singleTodoAtom'
+import { useRecoilState } from 'recoil'
+
 export function RenderTodo({todos, setChange}){
     const [animationParent] = useAutoAnimate()
+
+    const [singleTodo,setSingleTodo] = useRecoilState(todoAtom);
+
+    console.log(singleTodo)
     
     return <div ref={animationParent} className='renderAll'>
         {todos.map( (todo) => {
             return <div className='eachTodo' key={todo._id}>
                 <h1>{todo.title}</h1>
                 <h4>{todo.description}</h4>
-                <button> <a href={`todo/${todo._id}`}>open</a> </button>
+                <button onClick={()=>{
+                    console.log("butotn clicked")
+                    setSingleTodo({
+                        _id : todo._id,
+                        title : todo.title,
+                        description : todo.description,
+                    })
+                    console.log(singleTodo)
+                }}> <a href={`todo/${todo._id}`}>open</a> </button>
                 <button onClick={()=>{
                     try{
                         fetch('http://localhost:3000/completed',{
