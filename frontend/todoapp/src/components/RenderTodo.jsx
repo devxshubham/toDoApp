@@ -1,16 +1,12 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 
-import {todoAtom} from '../store/atoms/singleTodoAtom'
 import { useSetRecoilState, useRecoilState } from 'recoil'
 import { changeAtom } from '../store/atoms/change'
 
 export function RenderTodo({todos}){
     const [animationParent] = useAutoAnimate()
 
-    const setChange = useRecoilState(changeAtom)
-
-    const setSingleTodo = useSetRecoilState(todoAtom)
-    setSingleTodo(prev => prev+1)
+    const setChange = useSetRecoilState(changeAtom)
     
     return <div ref={animationParent} className='renderAll'>
         {todos.map( (todo) => {

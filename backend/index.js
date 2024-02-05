@@ -51,9 +51,9 @@ app.post('/todo', async(req, res)=>{
 app.get('/todo/:id', async(req, res)=>{
     const id = req.params.id;
     
-    const task = await Todo.findById(id);
-    console.log(id)
-    res.json(task)
+    const todo = await Todo.findById(id);
+    console.log(typeof(todo))
+    res.send(todo)
 })
 
 app.put('/completed', async(req, res) => {

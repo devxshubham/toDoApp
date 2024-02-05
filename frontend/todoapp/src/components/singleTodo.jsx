@@ -1,20 +1,30 @@
-import {todoAtom} from '../store/atoms/singleTodoAtom'
 import {RecoilRoot, useRecoilValue,useRecoilState} from 'recoil'
-import {useEffect} from 'react'
+import { useEffect, useState } from 'react';
+import {useParams} from 'react-router-dom'
 
-export function SingleTodo(){
-    const [todo, setTodo] = useRecoilState(todoAtom)
+export function SingleTodo(props){
+    const [todo, setTodo] = useState({title:"title",description:"description"})
+    const {id} = useParams();
+
+    useEffect(()=>{
+        const fetchData = async () => {
+            try {
+              const response = await fetch(`http://localhost:3000/todo/${id}`);
+              console.log(response);
+              const json = await response.json();
+              setTodo(json);
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            }
+          };
+          fetchData();
+    },[])
+
     
-    // return <h1>{todo}</h1>
     return <div className="singleTodo">
         <h1>{todo.title}</h1>
                 <h4>{todo.description}</h4>
-                <button onClick={()=>{
-                    setTodo({
-                        title : "setted",
-                        description : "setted"
-                    });
-                }}>change</button>
+                
                 <button onClick={()=>{
                     try{
                         fetch('http://localhost:3000/completed',{

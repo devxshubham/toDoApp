@@ -4,7 +4,6 @@ import {changeAtom} from '../store/atoms/change'
 
 function useTodos(){
     const [todos, setTodos] = useState([]);
-    // const [change, setChange] = useState(0);
 
     const change = useRecoilValue(changeAtom)
   

@@ -7,7 +7,8 @@
 .create{
   display: flex;
   flex-direction: column;
-  width : 30vw;
+  width : 25vw;
+  height : 60vh;
 
   background-color: white;
   border : 1px solid black;
@@ -30,12 +31,8 @@
   text-align: center;
   
   border-radius: 15px;
-  /* transition: all 3s ease 1s; */
 }
-/* .eachTodo:hover{
-  transform : scale(2);
-  margin-top: 20vh;
-} */
+
 input{
   padding: 10px;
   margin: 20px;
@@ -45,4 +42,70 @@ button{
   padding : 10px;
   margin: 20px;
   border-radius: 10px;
+}
+
+@media (max-width:600px){
+  .renderAll{
+    display : grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-auto-columns: minmax(00px, 1px);
+  
+    width : 70vw;
+    margin : 10px;
+  }
+}
+@media (min-width:600px) and (max-width:800px){
+  .renderAll{
+    display : grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-auto-columns: minmax(00px, 1px);
+  
+    width : 70vw;
+    margin : 10px;
+  }
+  .create{
+    width : 30vw;
+    height: 40vh;
+  }
+}
+@media (min-width:400px) and (max-width:600px){
+  .renderAll{
+    display : grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-auto-columns: minmax(00px, 1px);
+  
+    width : 60vw;
+    margin : 10px;
+  }
+  .create{
+    width : 40vw;
+    height: 40vh;
+  }
+}
+@media (max-width:400px){
+  .container{
+    display : flex;
+    flex-direction: column;
+    width : 10vw;
+  }
+  .renderAll{
+    display : grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-auto-columns: minmax(00px, 1px);
+  
+    width : 90vw;
+    margin : 10px;
+  }
+  .create{
+    width : 90vw;
+    height: 40vh;
+  }
 }
